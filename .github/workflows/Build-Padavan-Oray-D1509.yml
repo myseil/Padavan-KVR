@@ -1,4 +1,4 @@
-#修改TNAME: K2P 中的K2P为你需要编译的型号，注意名称要与configs/templates/目录下的名字相同
+#修改TNAME: Oray-D1509 中的Oray-D1509为你需要编译的型号，注意名称要与configs/templates/目录下的名字相同
 name: Build-Padavan-Oray-D1509
 
 on: 
