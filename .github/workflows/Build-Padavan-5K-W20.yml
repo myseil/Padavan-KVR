@@ -1,5 +1,5 @@
 #修改TNAME: K2P 中的K2为你需要编译的型号，注意名称要与configs/templates/目录下的名字相同
-name: Build-Padavan-MI-MINI
+name: Build-Padavan-5K-W20
 
 on: 
   workflow_dispatch:
@@ -25,13 +25,13 @@ jobs:
       env:
         KERNEL: 3.4
       run: |
-        git clone --depth=1 https://github.com/fightroad/Padavan-KVR.git /opt/rt-n56u
+        git clone --depth=1 https://github.com/myseil/Padavan-KVR.git /opt/rt-n56u
         cd /opt/rt-n56u/toolchain-mipsel
         sh dl_toolchain.sh
         mkdir -p /opt/images/
     - name: Build Firmware
       env:
-        TNAME: MI-MINI
+        TNAME: 5K-W20
         KERNEL: 3.4
       run: |
         cd /opt/rt-n56u/trunk
