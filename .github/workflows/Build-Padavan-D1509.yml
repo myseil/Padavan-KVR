@@ -29,6 +29,7 @@ jobs:
         cd /opt/rt-n56u/toolchain-mipsel
         sh dl_toolchain.sh
         mkdir -p /opt/images/
+        autoreconf -ivf
     - name: Build Firmware
       env:
         TNAME: Oray-D1509
