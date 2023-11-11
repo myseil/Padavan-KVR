@@ -29,7 +29,6 @@ jobs:
         cd /opt/rt-n56u/toolchain-mipsel
         sh dl_toolchain.sh
         mkdir -p /opt/images/
-        autoreconf -ivf
     - name: Build Firmware
       env:
         TNAME: Oray-D1509
@@ -41,30 +40,8 @@ jobs:
         exit 1
         fi
         cp -f configs/templates/$TNAME.config .config
-        ################################################################################################
-        #因不同型号配置功能不一样，所以先把配置项删除，如果你自己要添加其他的，也要写上删除这一条，切记！！！
-        ################################################################################################
-        
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_ZEROTIER/d' .config #删除配置项zerotier
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS/d' .config #删除配置项SHADOWSOCKS
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_OPENVPN/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_FRPC/d' .config
-        ######################################################################
-        #以下选项是定义你需要的功能（y=集成,n=忽略），重新写入到.config文件
-        ######################################################################
-        
-        echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=n" >> .config #zerotier ~1.3M
-        echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=n" >> .config #SHADOWSOCKS 
-        #echo "CONFIG_FIRMWARE_INCLUDE_OPENVPN=y" >> .config 
-        echo "CONFIG_FIRMWARE_INCLUDE_FRPC=n" >> .config  
-        ###############################################################################
-        ##########
-        #自定义添加其它功能请参考源码configs/templates/目录下的config文件。按照上面的格式添加即可
-        #格式如下：
-        #sed -i '/自定义项/d' .config
-        #echo "自定义项=y" >> .config
-        #########################################################################################
         sudo ./clear_tree
+        sudo autoreconf -ivf
         sudo ./build_firmware_modify $TNAME 0
         sudo mv -f images/*.trx /opt/images/
     - name : Upload packages
