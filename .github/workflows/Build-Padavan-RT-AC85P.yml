@@ -25,7 +25,7 @@ jobs:
       env:
         KERNEL: 3.4
       run: |
-        git clone --depth=1 https://github.com/vb1980/Padavan-KVR.git /opt/rt-n56u
+        git clone --depth=1 https://github.com/keke1023/Padavan.git /opt/rt-n56u
         cd /opt/rt-n56u/toolchain-mipsel
         sh dl_toolchain.sh
         mkdir -p /opt/images/
@@ -51,7 +51,6 @@ jobs:
         sed -i '/CONFIG_FIRMWARE_INCLUDE_NJIT_CLIENT/d' .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_ZEROTIER/d' .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_FRPC/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_NPC/d' .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_ALIDDNS/d' .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS/d' .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_V2RAY/d' .config
@@ -66,18 +65,17 @@ jobs:
         ######################################################################
         #以下选项是定义你需要的功能（y=集成,n=忽略），重新写入到.config文件
         ######################################################################
-        echo "CONFIG_FIRMWARE_INCLUDE_NPC=n" >> .config #npc
-        #echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=y" >> .config #zerotier ~1.3M
-        #echo "CONFIG_FIRMWARE_INCLUDE_FRPC=y" >> .config  #frpc
+        echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=y" >> .config #zerotier ~1.3M
+        echo "CONFIG_FIRMWARE_INCLUDE_FRPC=y" >> .config  #frpc
         echo "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=y" >> .config #aliddns
         ##科学上网##
         echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=y" >> .config
         #echo "CONFIG_FIRMWARE_INCLUDE_V2RAY=y" >> .config
         echo "CONFIG_FIRMWARE_INCLUDE_XRAY=y" >> .config
-        #echo "CONFIG_FIRMWARE_INCLUDE_TROJAN=y" >> .config 
+        echo "CONFIG_FIRMWARE_INCLUDE_TROJAN=y" >> .config 
         echo "CONFIG_FIRMWARE_INCLUDE_SSOBFS=y" >> .config 
         ##softvpn
-        echo "CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_SERVER=y" >> .config
+        #echo "CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_SERVER=y" >> .config
         #echo "CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CLIENT=y" >> .config
         #echo "CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CMD=y" >> .config
 
