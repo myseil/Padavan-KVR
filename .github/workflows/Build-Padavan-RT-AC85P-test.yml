@@ -1,5 +1,5 @@
 #使用keke的库进行编译，删除部分初始的配置。达到纯净系统。
-name: Build-Padavan-RT-AC85P
+name: Build-Padavan-RT-AC85P-test
 
 on: 
   workflow_dispatch:
