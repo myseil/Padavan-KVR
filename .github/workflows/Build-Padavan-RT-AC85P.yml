@@ -1,4 +1,3 @@
-#使用keke的库进行编译，删除部分初始的配置。达到纯净系统。
 name: Build-Padavan-RT-AC85P
 
 on: 
@@ -25,7 +24,7 @@ jobs:
       env:
         KERNEL: 3.4
       run: |
-        git clone --depth=1 https://github.com/keke1023/Padavan.git /opt/rt-n56u
+        git clone --depth=1 https://github.com/fightroad/Padavan-KVR.git /opt/rt-n56u
         cd /opt/rt-n56u/toolchain-mipsel
         sh dl_toolchain.sh
         mkdir -p /opt/images/
